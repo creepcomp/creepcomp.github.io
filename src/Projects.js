@@ -1,23 +1,23 @@
-import React from "react";
-import { Alert } from "react-bootstrap";
+import React from "react"
+import { Alert } from "react-bootstrap"
 
-const Repositories = () => {
-    const [repositories, setRepositories] = React.useState([]);
-    const [error, setError] = React.useState();
+const Projects = () => {
+    const [repositories, setRepositories] = React.useState([])
+    const [error, setError] = React.useState()
 
     React.useEffect(e => {
         fetch("https://api.github.com/users/creepcomp/repos").then(async r => {
-            const data = await r.json();
+            const data = await r.json()
             if (r.ok) {
                 data.map(repository => {
                     fetch(repository.languages_url).then(r => r.json()).then(languages => {
-                        repository.languages = languages;
-                        setRepositories([...data]);
-                    });
-                });
-            } else setError(data);
-        });
-    }, []);    
+                        repository.languages = languages
+                        setRepositories([...data])
+                    })
+                })
+            } else setError(data)
+        })
+    }, [])    
 
     return (
         <div dir="ltr">
@@ -40,4 +40,4 @@ const Repositories = () => {
     )
 }
 
-export default Repositories;
+export default Projects

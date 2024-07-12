@@ -1,66 +1,56 @@
-import React, { Suspense } from "react";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
-import { Helmet } from "react-helmet";
-import profile from "./profile.jpeg";
-import foobar from "./foobar.png";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Suspense } from "react"
+import { Button, Col, Container, Image, Row } from "react-bootstrap"
+import { Helmet } from "react-helmet"
+import Socials from "./Socials"
+import Skills from "./Skills"
+import profile from "./assets/profile.jpg"
+import stockdevice from "./assets/stockdevice.png"
+import foobar from "./assets/foobar.png"
+import "bootstrap/dist/css/bootstrap.min.css"
 
-const Repositories = React.lazy(() => import("./Repositories"));
+const Projects = React.lazy(() => import("./Projects"))
 
 const English = () => {
-    const skills = {
-        hard: [
-            "Python",
-            "Javascript",
-            "Django",
-            "FastAPI",
-            "PostgreSQL",
-            "MongoDB",
-            "React",
-            "RESTful APIs",
-            "Deployment",
-            "Security",
-            "Testing"
-        ],
-        soft: [
-            "Communication",
-            "Collaboration",
-            "Adaptability",
-            "Problem-solving",
-            "Time management",
-            "Leadership",
-            "Emotional intelligence",
-            "Critical thinking",
-            "Conflict resolution"
-        ]
-    }; 
+    const aboutme = "I am a passionate and dedicated full-stack web developer with a strong background in building dynamic, high-performance web applications. With expertise in both front-end and back-end development, I specialize in using React to create intuitive and responsive user interfaces and Django to build robust and scalable server-side applications. My comprehensive understanding of the web development lifecycle allows me to seamlessly integrate design, functionality, and user experience. I thrive in collaborative environments and am always eager to tackle new challenges, continuously seeking to enhance my skills and contribute to innovative projects."
 
     return (
         <Container className="bg-light rounded shadow">
             <Helmet>
-                <title>Parsa Rostamzadeh | CV</title>
+                <title>Parsa Rostamzadeh - Resume (CV)</title>
+                <meta name="keyword" content="parsa, rostamzadeh, resume, cv" />
+                <meta name="description" content={aboutme.slice(0, 256)} />
             </Helmet>
             <Row>
                 <Col lg={3} className="bg-primary bg-opacity-25 p-2">
-                    <Image src={profile} alt="Profile" className="w-100 rounded-circle" />
-                    <div className="m-1 mb-4">
+                    <a href={profile}><img src={profile} alt="Profile" className="w-100 rounded-circle" /></a>
+                    <div className="m-1 mb-3">
                         <h5 className="border-bottom pb-1">Contact</h5>
                         <div className="ms-2">
-                            <div className="m-1">
-                                <span className="d-block">Email</span>
-                                <small className="d-block ms-2">creepcomp@gmail.com</small>
+                        <div className="m-1">
+                                <span className="d-block">Email:</span>
+                                <small className="d-block">
+                                    <a href="mail:creepcomp@gmail.com">creepcomp@gmail.com</a>
+                                </small>
                             </div>
                             <div className="m-1">
-                                <span className="d-block">Phone</span>
-                                <small className="d-block ms-2">+98-9361966744</small>
+                                <span className="d-block">Mobile:</span>
+                                <small className="d-block">
+                                    <a href="tel:0989361966744">+98-9361966744</a>
+                                </small>
                             </div>
                             <div className="m-1">
-                                <span className="d-block">Address</span>
-                                <small className="d-block ms-2">Iran, Tehran</small>
+                                <span className="d-block">Website:</span>
+                                <small className="d-block">
+                                    <a href="https://creepcomp.github.io">creepcomp.github.io</a>
+                                </small>
+                            </div>
+                            <div className="m-1">
+                                <span className="d-block">Address:</span>
+                                <small className="d-block">Iran, Tehran</small>
                             </div>
                         </div>
                     </div>
-                    <div className="m-1 mb-4">
+                    <div className="m-1 mb-3">
                         <h5 className="border-bottom pb-1">Education</h5>
                         <div className="bg-light rounded m-1 p-2">
                             <small className="d-block">2021 - 2023</small>
@@ -75,16 +65,7 @@ const English = () => {
                     </div>
                     <div className="m-1">
                         <h5 className="border-bottom pb-1">Social</h5>
-                        <div className="ms-4">
-                            <a className="d-block" href="https://www.linkedin.com/in/creepcomp"><i className="fa-brands fa-linkedin fa-lg"></i> LinkedIn</a>
-                            <a className="d-block" href="https://github.com/creepcomp"><i className="fa-brands fa-github fa-lg"></i> Github</a>
-                            <a className="d-block" href="https://twitter.com/creepcomp"><i className="fa-brands fa-twitter fa-lg"></i> Twitter</a>
-                            <a className="d-block" href="https://join.skype.com/invite/L7fWbCegvzAa"><i className="fa-brands fa-skype fa-lg"></i> Skype</a>
-                            <a className="d-block" href="https://facebook.com/creepcomp"><i className="fa-brands fa-facebook fa-lg"></i> Facebook</a>
-                            <a className="d-block" href="https://telegram.me/creepcomp"><i className="fa-brands fa-telegram fa-lg"></i> Telegram</a>
-                            <a className="d-block" href="https://instagram.com/creepcomp"><i className="fa-brands fa-instagram fa-lg"></i> Instagram</a>
-                            <a className="d-block" href="https://youtube.com/@creepcomp"><i className="fa-brands fa-youtube fa-lg"></i> Youtube</a>
-                        </div>
+                        <Socials />
                     </div>
                 </Col>
                 <Col>
@@ -92,59 +73,46 @@ const English = () => {
                         <h1>Parsa Rostamzadeh</h1>
                         <h4>Web & Application Developer</h4>
                     </div>
-                    <div className="mb-4">
+                    <div>
                         <h5 className="pb-1 border-bottom">About me</h5>
-                        <p style={{textAlign: "justify"}}>As a full-stack web and application developer with experience contributing to both small and large organizational projects, I bring fluency in Python and JavaScript languages as well as proficiency in Django and React frameworks. Moreover, I possess strong collaborative skills, having worked effectively within teams and mastered collaboration tools like Git. I am highly responsible and committed to continuous learning. My capacity to solve complex problems enables me to provide innovative solutions. I am eager to apply my experience and skills to enhance your web/app development projects.</p>
+                        <p style={{textAlign: "justify"}}>{aboutme}</p>
                     </div>
                     <Row>
-                        <Col lg className="mb-4">
-                            <h5 className="pb-1 border-bottom">Hard Skills</h5>
-                            <div className="d-flex flex-wrap">
-                                {skills.hard.map((x, i) => <span key={i} className="bg-primary text-light rounded m-1 p-1">{x}</span>)}
+                        <Col lg>
+                            <div className="mb-3">
+                                <h5 className="pb-1 border-bottom">Skills</h5>
+                                <Skills />
+                            </div>
+                            <div>
+                                <h5 className="pb-1 border-bottom">Projects (Github)</h5>
+                                <Suspense fallback={"Loading .."}>
+                                    <Projects />
+                                </Suspense>
                             </div>
                         </Col>
-                        <Col className="mb-4">
-                            <h5 className="pb-1 border-bottom">Soft Skills</h5>
-                            <div className="d-flex flex-wrap">
-                                {skills.soft.map((x, i) => <span key={i} className="bg-primary text-light rounded m-1 p-1">{x}</span>)}
-                            </div>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col lg className="mb-4">
-                            <h5 className="pb-1 border-bottom">Projects (Github)</h5>
-                            <Suspense fallback={"Loading .."}>
-                                <Repositories />
-                            </Suspense>
-                        </Col>
-                        <Col className="mb-4">
+                        <Col>
                             <h5 className="pb-1 border-bottom">Achievements</h5>
                             <ul>
+                                <li className="mb-3">
+                                    <strong>Level 4 at <a href="https://www.turing.com/kb/foobar-google-secret-hiring-technique">Google Foobar</a></strong>
+                                    <p style={{textAlign: "justify"}}>This was a covert request from Google, requiring candidates to complete at least three levels of its challenges to be shortlisted. I was one of the few who received this request and progressed to level four. Unfortunately, due to my Iranian nationality, Google did not accept my application, and I have yet to receive a response.</p>
+                                    <a href={foobar}><Image src={foobar} className="w-100 rounded" /></a>
+                                </li>
                                 <li>
-                                    <strong>Level 4 at <a href="https://www.turing.com/kb/foobar-google-secret-hiring-technique">Google Foobar</a>.</strong>
-                                    <p>A few years ago, while browsing online, Google surprised me with a unique suggestion: Google Foobar. It's a secret recruitment tool by Google where they invite people to solve coding challenges to find potential talent.</p>
-                                    <a href={foobar}><Image src={foobar} fluid /></a>
+                                    <strong>Successful e-commerce project (<a href="https://stockdevice.ir">StockDevice.ir</a>)</strong>
+                                    <p style={{textAlign: "justify"}}>I have been working on a personal project for several years to challenge my abilities. This is an e-commerce project built as a full REST API using Django Rest Framework and React Native. The project has been successful so far.</p>
+                                    <a href={stockdevice}><Image src={stockdevice} className="w-100 rounded" /></a>
                                 </li>
                             </ul>
                         </Col>
                     </Row>
-                    <div>
-                        <h5 className="pb-1 border-bottom">Work Experience</h5>
-                        <ul>
-                            <li>
-                                <strong className="d-block">Project Manager & Full-Stack Web Developer</strong>
-                                <a href="https://saherandishe.ir">Saher Andishe | Digital Store | https://saherandishe.ir</a>
-                                <p>An official store platform, based on Django (Rest Framework) for the backend and React (Native) for the frontend, has been developed for a local digital store business.</p>
-                            </li>
-                        </ul>
-                    </div>
                 </Col>
             </Row>
-            <div className="fixed-top p-2" dir="rtl">
+            <div className="fixed-top p-2 d-print-none" dir="rtl">
                 <Button variant="light" href="#fa">فارسی</Button>
             </div>
         </Container>
     )
 }
 
-export default English;
+export default English

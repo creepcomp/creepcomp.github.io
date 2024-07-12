@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
-const English = React.lazy(() => import("./English"));
-const Persian = React.lazy(() => import("./Persian"));
+import React, { Suspense } from "react"
+import { HashRouter, Routes, Route } from "react-router-dom"
+const English = React.lazy(() => import("./English"))
+const Persian = React.lazy(() => import("./Persian"))
 
 const App = () => {
     return (
@@ -22,4 +22,4 @@ const App = () => {
     )
 }
 
-export default App;
+export default App

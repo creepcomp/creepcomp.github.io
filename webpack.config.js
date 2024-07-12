@@ -11,9 +11,14 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
-                test: /\.(woff2|jpeg|png)/,
+                test: /\.json$/,
+                type: 'javascript/auto',
+                use: 'json-loader',
+            },
+            {
+                test: /\.(woff2|jpg|png)/,
                 type: 'asset/resource'
-            }
+            },
         ]
     },
     output: {
